@@ -1,0 +1,69 @@
+[bar/mybar]
+font-0 = "RobotoMono Nerd Font":size=10;1
+font-1 = FontAwesome:size=10;1
+
+bottom = true
+fixed-center = true
+
+width = 100%
+height = 40
+
+tray-position = right
+tray-padding  = 2
+tray-maxsize  = 32
+
+dpi-x = 180
+dpi-y = 180
+
+module-margin = 1
+
+line-size = 5
+line-color = #f00
+
+# The Modules setup
+modules-left = i3 title
+modules-right = battery wireless-network pulseaudio backlight date
+
+[module/i3]
+type = internal/i3
+label-focused   = %name%
+label-unfocused = %name%
+label-visible   = %name%
+label-urgent    = %name%
+label-focused-padding   = 0
+label-focused-underline = #F00
+label-unfocused-padding = 0
+label-visible-padding   = 0
+label-separator = |
+label-separator-padding = 1
+label-separator-foreground = #ffb52a
+
+[module/pulseaudio]
+type = internal/pulseaudio
+label-muted = (muted)
+
+[module/date]
+type = internal/date
+interval = 1.0
+date = %Y-%m-%d %H:%M
+
+[module/backlight]
+type = internal/backlight
+card = intel_backlight
+
+[module/wireless-network]
+type = internal/network
+interface = wlp1s0
+interval = 3.0
+label-connected = %essid% %signal%
+label-disconnected = not connected
+
+[module/battery]
+type = internal/battery
+full-at = 99
+battery = BAT0
+adapter = AC0
+poll-interval = 60
+
+[module/title]
+type = internal/xwindow
