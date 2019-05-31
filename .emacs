@@ -25,7 +25,7 @@ There are two things you can do about this warning:
     ("0598c6a29e13e7112cfbc2f523e31927ab7dce56ebb2016b567e1eff6dc1fd4f" default)))
  '(package-selected-packages
    (quote
-    (auto-package-update haskell-mode all-the-icons neotree grails-projectile-mode ivy yaml-mode racer company flycheck-rust cargo rust-mode solarized-theme))))
+    (fish-completion fish-mode auto-package-update haskell-mode all-the-icons neotree grails-projectile-mode ivy yaml-mode racer company flycheck-rust cargo rust-mode solarized-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -37,8 +37,15 @@ There are two things you can do about this warning:
 (setq exec-path (append exec-path '("/home/kas/.cargo/bin")))
 
 ;; Init packages
-;; (ivy-mode 1)
+(ivy-mode 1)
 (setq neo-theme 'icons)
+
+;; Projectile
+(require 'projectile)
+(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+(projectile-mode +1)
+(setq projectile-project-search-path '("~/projects/" "~/sources/"))
 
 ;; Rust Development
 (add-hook 'rust-mode-hook 'cargo-minor-mode)

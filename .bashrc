@@ -7,3 +7,5 @@ export LC_CTYPE=en_US.UTF-8
 
 alias ls=exa
 alias cat=bat
+
+exec fish
