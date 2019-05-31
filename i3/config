@@ -173,8 +173,8 @@ for_window [class="^.*"] border pixel 0
 bindsym XF86AudioRaiseVolume  exec --no-startup-id "pactl set-sink-mute 0 false; pactl set-sink-volume 0 +5%"
 bindsym XF86AudioLowerVolume  exec --no-startup-id "pactl set-sink-mute 0 false; pactl set-sink-volume 0 -5%"
 bindsym XF86AudioMute         exec --no-startup-id "pactl set-sink-mute 0 toggle"
-bindsym XF86MonBrightnessUp   exec --no-startup-id "brightlight -p -i 5"
-bindsym XF86MonBrightnessDown exec --no-startup-id "brightlight -p -d 5"
+bindsym XF86MonBrightnessUp   exec --no-startup-id "sudo brightlight -p -i 5"
+bindsym XF86MonBrightnessDown exec --no-startup-id "sudo brightlight -p -d 5"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)

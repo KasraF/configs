@@ -1,6 +1,9 @@
 [bar/mybar]
-font-0 = "RobotoMono Nerd Font":size=10;1
-font-1 = FontAwesome:size=10;1
+font-0 = RobotoMono Nerd Font:style=Regular;6
+font-1 = FontAwesome:style=Regular;6
+
+background = #000
+foreground = #839496
 
 bottom = true
 fixed-center = true
@@ -17,8 +20,10 @@ dpi-y = 180
 
 module-margin = 1
 
+padding = 1
+
 line-size = 5
-line-color = #f00
+line-color = #dc322f
 
 # The Modules setup
 modules-left = i3 title
@@ -26,44 +31,76 @@ modules-right = battery wireless-network pulseaudio backlight date
 
 [module/i3]
 type = internal/i3
-label-focused   = %name%
-label-unfocused = %name%
-label-visible   = %name%
-label-urgent    = %name%
+fuzzy-match = true
+ws-icon-0 = web;
+ws-icon-1 = code;
+ws-icon-2 = messag;
+ws-icon-default = 
 label-focused-padding   = 0
-label-focused-underline = #F00
+label-focused-underline = #dc322f
 label-unfocused-padding = 0
 label-visible-padding   = 0
 label-separator = |
 label-separator-padding = 1
-label-separator-foreground = #ffb52a
+label-separator-foreground = #b58900
 
 [module/pulseaudio]
 type = internal/pulseaudio
-label-muted = (muted)
+format-volume = <ramp-volume> <label-volume>
+label-muted   =  
+ramp-volume-0 = 奄
+ramp-volume-1 = 奔
+ramp-volume-2 = 墳
+
 
 [module/date]
 type = internal/date
 interval = 1.0
-date = %Y-%m-%d %H:%M
+label = %date% %time%
+date  = %Y-%m-%d
+time  = %H:%M
 
 [module/backlight]
 type = internal/backlight
 card = intel_backlight
+format = <ramp> <label>
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
 
 [module/wireless-network]
 type = internal/network
 interface = wlp1s0
 interval = 3.0
-label-connected = %essid% %signal%
-label-disconnected = not connected
+label-connected = 直 %essid%
+label-disconnected = 睊
 
 [module/battery]
 type = internal/battery
 full-at = 99
 battery = BAT0
 adapter = AC0
-poll-interval = 60
+poll-interval = 1
+
+format-charging    = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+
+label-charging    = %percentage%%
+label-discharging = %percentage%%
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
 
 [module/title]
 type = internal/xwindow
