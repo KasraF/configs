@@ -9,3 +9,5 @@ alias ls=exa
 alias cat=bat
 
 exec fish
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

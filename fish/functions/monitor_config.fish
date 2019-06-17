@@ -7,11 +7,13 @@ function monitor_config -a mode -d "Call xrandr to set monitor mode. Mode: {mobi
 		echo "Initializing mobile mode..."
 		xrandr --output eDP-1 --auto
 		echo "Xft.dpi: 180" > ~/.Xresources
+		cp ~/.config/polybar/.config.mobile ~/.config/polybar/config
 		echo "Configuration completed. Please restart lighdm to fix DPI"
 	    case docked
 		echo "Initializing docked mode..."
 		xrandr --output DP-2 --mode 2560x1440 --output eDP-1 --off
 		echo "! Xft.dpi: 180" > ~/.Xresources
+		cp ~/.config/polybar/.config.docked ~/.config/polybar/config
 		echo "Configuration completed. Please restart lighdm to fix DPI"
 	    case '*'
 		echo -n "Mode not recognized: "
