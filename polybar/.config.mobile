@@ -1,6 +1,6 @@
 [bar/mybar]
-font-0 = RobotoMono Nerd Font:style=Regular;6
-font-1 = FontAwesome:style=Regular;6
+font-0 = RobotoMono Nerd Font:style=Regular:size=10;6
+font-1 = FontAwesome:style=Regular:size=10;6
 
 background = #000
 foreground = #839496
@@ -9,11 +9,11 @@ bottom = true
 fixed-center = true
 
 width = 100%
-height = 40
+height = 30
 
 tray-position = right
 tray-padding  = 2
-tray-maxsize  = 32
+tray-maxsize  = 30
 
 dpi-x = 180
 dpi-y = 180
@@ -22,12 +22,16 @@ module-margin = 1
 
 padding = 1
 
-line-size = 5
+line-size = 4
 line-color = #dc322f
 
 # The Modules setup
 modules-left = i3 title
-modules-right = battery wireless-network pulseaudio backlight date
+modules-right = battery wireless-network pulseaudio backlight date services
+
+[module/services]
+type = custom/script
+exec = ~/.config/polybar/scripts/service_list.sh
 
 [module/i3]
 type = internal/i3

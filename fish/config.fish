@@ -8,6 +8,9 @@ setenv LESS_TERMCAP_so \e'[38;5;246m'    # begin standout-mode - info box
 setenv LESS_TERMCAP_ue \e'[0m'           # end underline
 setenv LESS_TERMCAP_us \e'[04;38;5;146m' # begin underline
 
+alias emsdk_setup ". /home/kas/sources/emsdk/emsdk_env.fish"
+alias emacs remacs
+
 function fish_prompt
 	set_color brblack
 	echo -n "["(date "+%H:%M")"] "

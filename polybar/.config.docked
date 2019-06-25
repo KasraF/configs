@@ -13,7 +13,7 @@ height = 20
 
 tray-position = right
 tray-padding  = 2
-tray-maxsize  = 32
+tray-maxsize  = 20
 
 dpi-x = 90
 dpi-y = 90
@@ -27,7 +27,11 @@ line-color = #dc322f
 
 # The Modules setup
 modules-left = i3 title
-modules-right = battery wireless-network pulseaudio backlight date
+modules-right = battery wireless-network pulseaudio backlight date services
+
+[module/services]
+type = custom/script
+exec = ~/.config/polybar/scripts/service_list.sh
 
 [module/i3]
 type = internal/i3
