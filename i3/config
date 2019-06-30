@@ -183,7 +183,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id "sudo brightlight -p -d 5"
 exec --no-startup-id $HOME/.fehbg
 
 # Set auto-lock
-exec_always --no-startup-id xautolock -locker "/usr/bin/i3lock -c 000000 -e"
+exec_always --no-startup-id xautolock -corners -000 -locker "/usr/bin/i3lock -c 000000 -e"
 
 # Set gaps to prevent polybar from overlapping windows
 gaps inner 0
