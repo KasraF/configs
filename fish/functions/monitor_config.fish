@@ -13,7 +13,7 @@ function monitor_config -a mode -d "Call xrandr to set monitor mode. Mode: {mobi
 		echo "Configuration completed. Please restart lighdm to fix DPI"
 	    case docked
 		echo "Initializing docked mode..."
-		xrandr --output DP-2 --auto --output eDP-1 --off
+		xrandr --output DP-2 --primary --auto --output eDP-1 --off
 		echo "! Xft.dpi: 180" > ~/.Xresources
 		cp ~/.config/polybar/.config.docked ~/.config/polybar/config
 		cp ~/.config/alacritty/.alacritty.yml.docked ~/.config/alacritty/alacritty.yml;
