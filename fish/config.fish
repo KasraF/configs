@@ -25,3 +25,6 @@ function fish_prompt
 	echo -n '> '
 	set_color normal
 end
+
+# opam configuration
+source /home/kas/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
