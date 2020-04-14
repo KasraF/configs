@@ -189,6 +189,9 @@ exec --no-startup-id redshift-gtk
 # Run Signal in Tray
 exec --no-startup-id signal-desktop --start-in-tray
 
+# Run Slack in tray
+exec --no-startup-id slack --startup
+
 # Run Buzz for email notifications
 exec --no-startup-id $HOME/.cargo/bin/buzz
 
@@ -202,9 +205,24 @@ for_window [title="win0"] floating enabled
 for_window [title="Triangle Application"] border pixel 4
 for_window [title="Steam - News"] floating enabled
 for_window [title="Friends List"] floating enabled
+for_window [title="Hello, world!"] floating enabled
+for_window [title="Yubico Authenticator"] floating enabled
+for_window [title="Anodyne"] floating enabled
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 # bar {
-#         status_command i3status
-# } 
+#     font pango:RobotoMono Nerd Font, FontAwesome 9
+#     position bottom
+#     status_command /home/kas/.local/bin/i3status-rs /home/kas/.config/i3/status.toml
+# 	separator_symbol ">>>"
+#     colors {
+#         separator #666666
+#         background #222222
+#         statusline #dddddd
+#         focused_workspace #0088CC #0088CC #ffffff
+#         active_workspace #333333 #333333 #ffffff
+#         inactive_workspace #333333 #333333 #888888
+#         urgent_workspace #2f343a #900000 #ffffff
+#     }
+# }
