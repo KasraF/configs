@@ -22,9 +22,13 @@ function fish_prompt
 	set_color green
 	printf '%s ' (__fish_git_prompt)
 	set_color red
+	if [ $status -ne 0 ];
+		printf '[%d]' $status;
+	end;
 	echo -n '> '
 	set_color normal
 end
 
-# opam configuration
-source /home/kas/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+zoxide init fish | source
+thefuck --alias | source
+starship init fish | source
