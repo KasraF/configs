@@ -1,0 +1,6 @@
+[build]
+target-dir = "/home/kas/projects/cargo-target/"
+rustflags = ["-C", "link-arg=-fuse-ld=lld"]
+
+[profile.release]
+lto = true

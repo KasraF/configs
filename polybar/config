@@ -9,11 +9,11 @@ bottom = true
 fixed-center = true
 
 width = 100%
-height = 24
+height = 30
 
 tray-position = right
-tray-padding  = 1
-tray-maxsize  = 20
+tray-padding  = 2
+tray-maxsize  = 18
 
 dpi-x = 90
 dpi-y = 90
@@ -26,13 +26,18 @@ line-color = #dc322f
 
 # The Modules setup
 modules-left = i3 title
-modules-right = wireless-network wired-network pulseaudio fs cpu memory date services
+modules-right = pulseaudio fs cpu memory wireless-network wired-network date services
+
+[module/mpris]
+type = custom/script
+exec = ~/.config/polybar/scripts/mpris_tail.sh -f '{artist} - {title}'
+tail = true
+label-underline = #d33682
 
 [module/fs]
 type = internal/fs
 mount-0 = /
 mount-1 = /home
-mount-2 = /unreal
 label-mounted = %mountpoint% %percentage_used%%
 
 [module/services]
@@ -56,7 +61,7 @@ label-unfocused = %icon%
 label-unfocused-padding = 1
 
 label-visible = %icon%
-label-visible-padding   = 1
+label-visible-padding = 1
 label-separator-foreground = #b58900
 
 [module/pulseaudio]
@@ -70,13 +75,15 @@ ramp-volume-2 = 墳
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
+# " "
+format-prefix = "cpu "
 label = %percentage%%
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
+# " "
+format-prefix = "mem "
 label = %percentage_used%%
 
 [module/date]
@@ -101,37 +108,21 @@ ramp-4 = 
 
 [module/wired-network]
 type = internal/network
-interface = enp9s0
+interface = enp3s0
 interval = 3.0
 label-connected =  %local_ip%
 label-disconnected = 
+format-connected-underline = #859900
+format-disconnected-underline = #859900
 
 [module/wireless-network]
 type = internal/network
-interface = wlp10s0
+interface = wlp5s0
 interval = 3.0
-label-connected = 直 %essid% (%local_ip%)
+label-connected = 直 %essid%
 label-disconnected = 睊
-
-[module/battery]
-type = internal/battery
-full-at = 99
-battery = BAT0
-adapter = AC0
-
-format-charging    = <label-charging>
-format-discharging = <ramp-capacity> <label-discharging>
-format-full        = <label-full>
-
-label-charging    =  %percentage%%
-label-discharging = %percentage%%
-label-full        =  %percentage%%
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
+format-connected-underline = #859900
+format-disconnected-underline = #FF66
 
 [module/title]
 type = internal/xwindow

@@ -1,4 +1,4 @@
 function fish_greeting
 
-fortune | cowsay;
+echo "Hack the Gibson";
 end

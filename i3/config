@@ -40,7 +40,7 @@ bindsym $mod+Shift+q kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec --no-startup-id rofi -show drun
 
 # change focus
 bindsym $mod+j focus left
@@ -170,9 +170,9 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id dunst
 
 # Configure system keys
-bindsym XF86AudioRaiseVolume  exec --no-startup-id "pactl set-sink-mute 0 false; pactl set-sink-volume 0 +5%"
-bindsym XF86AudioLowerVolume  exec --no-startup-id "pactl set-sink-mute 0 false; pactl set-sink-volume 0 -5%"
-bindsym XF86AudioMute         exec --no-startup-id "pactl set-sink-mute 0 toggle"
+bindsym XF86AudioRaiseVolume  exec --no-startup-id "pactl list short sinks | while read i; do pactl set-sink-mute ${i:0:1} false; pactl set-sink-volume ${i:0:1} +5%; done;"
+bindsym XF86AudioLowerVolume  exec --no-startup-id "pactl list short sinks | while read i; do pactl set-sink-mute ${i:0:1} false; pactl set-sink-volume ${i:0:1} -5%; done;"
+bindsym XF86AudioMute         exec --no-startup-id "pactl list short sinks | while read i; do ppactl set-sink-mute ${i:0:1} toggle; done;"
 bindsym XF86MonBrightnessUp   exec --no-startup-id "sudo brightlight -p -i 5"
 bindsym XF86MonBrightnessDown exec --no-startup-id "sudo brightlight -p -d 5"
 
@@ -192,8 +192,11 @@ exec --no-startup-id redshift-gtk
 # Run Slakc in Tray
 exec --no-startup-id slack --startup
 
-# Run Buzz for email notifications
-exec --no-startup-id $HOME/.cargo/bin/buzz
+# Run Mailspring for email notifications
+exec --no-startup-id mailspring
+
+# Run MineTime for calendar
+exec --no-startup-id minetime
 
 # Set gaps to prevent polybar from overlapping windows
 gaps inner 0

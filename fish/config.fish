@@ -8,7 +8,13 @@ setenv LESS_TERMCAP_so \e'[38;5;246m'    # begin standout-mode - info box
 setenv LESS_TERMCAP_ue \e'[0m'           # end underline
 setenv LESS_TERMCAP_us \e'[04;38;5;146m' # begin underline
 
-alias emsdk_setup ". /home/kas/sources/emsdk/emsdk_env.fish"
+set PATH $PATH:/home/kas/.cargo/bin
+
+alias vim nvim
+alias emacs "emacsclient -c -a="
+alias cat bat
+alias ls "exa --icons"
+alias la "exa -la --icons"
 
 function fish_prompt
 	set_color brblack
@@ -30,5 +36,4 @@ function fish_prompt
 end
 
 zoxide init fish | source
-thefuck --alias | source
 starship init fish | source
