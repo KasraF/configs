@@ -210,6 +210,8 @@ for_window [title="Steam - News"] floating enabled
 for_window [title="Friends List"] floating enabled
 for_window [title="Zoom Group Chat"] floating enabled
 for_window [title="Polls"] floating enabled
+for_window [title="Skype"] floating enabled
+for_window [title="Toggl Track"] floating enabled border pixel 3
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)

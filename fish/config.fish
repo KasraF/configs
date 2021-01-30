@@ -11,7 +11,7 @@ setenv LESS_TERMCAP_us \e'[04;38;5;146m' # begin underline
 set PATH $PATH:/home/kas/.cargo/bin
 
 alias vim nvim
-alias emacs "emacsclient -c -a="
+alias emacs "env TERM=xterm-24bit emacsclient -c -a="
 alias cat bat
 alias ls "exa --icons"
 alias la "exa -la --icons"
@@ -35,5 +35,9 @@ function fish_prompt
 	set_color normal
 end
 
+pyenv init - | source
+
 zoxide init fish | source
 starship init fish | source
+
+thefuck --alias | source

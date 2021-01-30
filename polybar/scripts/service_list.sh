@@ -5,7 +5,7 @@ if [ "$(systemctl is-active docker.service)" = "active" ]; then
 fi
 
 if [ "$(systemctl is-active bluetooth.service)" = "active" ]; then
-	echo -n ""
+	echo -n " "
 fi
 
 echo;

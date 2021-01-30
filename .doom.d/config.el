@@ -55,6 +55,7 @@
 
 ;; Make Emacs pretty
 (add-hook 'org-mode-hook 'org-bullets-mode)
+(add-hook 'org-mode-hook '+org-pretty-mode)
 (add-hook 'prog-mode-hook 'fira-code-mode)
 
 ;; Use Super+p for Projectile
@@ -62,10 +63,19 @@
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
 ;; Auto-format buffer on saves
-(setq rustic-format-on-save t)
-;; (setq rustic-lsp-format t)
-;; (setq rustic-format-trigger 'on-save)
+;; (setq rustic-format-on-save t)
+(setq rustic-lsp-format t)
+(setq rustic-format-trigger 'on-save)
+
+(defun lsp-format-hook ()
+    (add-hook 'before-save-hook #'lsp-format-buffer t t))
+(add-hook 'rustic-mode-hook #'lsp-format-hook)
+
 
 ;; Not sure which one actually works
 (setq tab-width 4)
 (setq-default tab-width 4)
+
+;; TabNine
+(add-to-list 'company-backends #'company-tabnine)
+(setq company-show-numbers t)

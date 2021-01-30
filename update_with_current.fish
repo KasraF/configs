@@ -14,12 +14,27 @@ cp -r ~/.config/fish .
 cp ~/.editorconfig .
 cp -r ~/.doom.d ./
 
+# LeftWM
+if test -d ./leftwm;
+	rm -rf ./leftwm;
+end;
+cp -r ~/.config/leftwm .
+
+# Picom
+if test -d ./picom;
+	rm -rf ./picom;
+end;
+cp -r ~/.config/picom .
+
 # Cargo!
 if test ! -d ./.cargo;
    mkdir ./.cargo
 end;
 
-cp ~/.cargo/config ./.cargo/
+cp ~/.cargo/* ./.cargo/
+
+# Git!
+cp ~/.gitconfig .
 
 # The commit and push!
 git add -A

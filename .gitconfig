@@ -1,0 +1,12 @@
+[credential]
+	helper = store
+[user]
+	name = Kasra Ferdowsifard
+	email = kferdowsifard@gmail.com
+[pull]
+	rebase = false
+[core]
+	editor = emacs
+	fsmonitor = rs-git-fsmonitor
+[init]
+	defaultBranch = main
