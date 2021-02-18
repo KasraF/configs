@@ -7,6 +7,5 @@
 	rebase = false
 [core]
 	editor = emacs
-	fsmonitor = rs-git-fsmonitor
 [init]
 	defaultBranch = main
