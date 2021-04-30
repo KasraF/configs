@@ -9,6 +9,7 @@ cp -r ~/.config/rofi .
 
 # Terminal
 cp ~/.config/alacritty/alacritty.yml .
+cp ~/.tmux.conf .
 cp -r ~/.config/fish .
 
 # Editor stuff
