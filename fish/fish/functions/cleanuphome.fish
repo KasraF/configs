@@ -1,0 +1,21 @@
+function cleanuphome
+    if [ -f "Cargo.lock" ];
+        cargo clean;
+    end;
+    if [ -f "Makefile" ];
+        make clean;
+    end;
+    if [ -f "build.sbt" ];
+        sbt clean;
+    end;
+    if [ -f "pom.xml" ];
+        mvn clean;
+    end;
+    for i in *;
+        if [ -d "$i" ];
+            cd "$i";
+            cleanuphome;
+            cd ../;
+        end;
+    end;
+end;

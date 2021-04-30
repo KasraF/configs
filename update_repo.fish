@@ -5,6 +5,7 @@
 cp ~/.config/i3/config i3/
 cp -r ~/.config/polybar .
 cp ~/.config/dunst/dunstrc .
+cp -r ~/.config/rofi .
 
 # Terminal
 cp ~/.config/alacritty/alacritty.yml .
