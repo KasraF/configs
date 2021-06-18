@@ -4,10 +4,28 @@ tags = ["爵", "", "", "", ""]
 
 [[keybind]]
 command = "Execute"
+value = "mpc toggle"
+modifier = []
+key = "XF86XK_AudioPlay"
+
+[[keybind]]
+command = "Execute"
+value = "mpc next"
+modifier = []
+key = "XF86XK_AudioNext"
+
+[[keybind]]
+command = "Execute"
+value = "mpc prev"
+modifier = []
+key = "XF86XK_AudioPrev"
+
+[[keybind]]
+command = "Execute"
 value = "rofi -show drun"
 modifier = ["modkey"]
-key = "d"
 
+key = "d"
 [[keybind]]
 command = "Execute"
 value = "pactl list short sinks | while read i; do pactl set-sink-mute ${i:0:1} false; pactl set-sink-volume ${i:0:1} +5%; done;"
