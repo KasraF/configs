@@ -8,8 +8,14 @@ setenv LESS_TERMCAP_so \e'[38;5;246m'    # begin standout-mode - info box
 setenv LESS_TERMCAP_ue \e'[0m'           # end underline
 setenv LESS_TERMCAP_us \e'[04;38;5;146m' # begin underline
 
+# Set Path
+set PATH $PATH:/home/kas/.cargo/bin:/home/kas/.local/bin
+set CC /usr/bin/clang
+set CPP /usr/bin/clang++
+
 alias vim nvim
 alias vi nvim
+alias emacs 'emacsclient -a "" -nc'
 
 function fish_prompt
 	set_color brblack
