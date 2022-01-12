@@ -9,7 +9,7 @@ setenv LESS_TERMCAP_ue \e'[0m'           # end underline
 setenv LESS_TERMCAP_us \e'[04;38;5;146m' # begin underline
 
 # Set Path
-set PATH $PATH:/home/kas/.cargo/bin:/home/kas/.local/bin
+set PATH /home/kas/.cargo/bin /home/kas/.local/bin /home/kas/.elan/bin /home/kas/go/bin $PATH
 set CC /usr/bin/clang
 set CPP /usr/bin/clang++
 
@@ -35,3 +35,6 @@ end
 
 zoxide init fish | source
 starship init fish | source
+
+# opam configuration
+source /home/kas/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true

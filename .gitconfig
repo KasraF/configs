@@ -7,6 +7,5 @@
 	rebase = false
 [core]
 	editor = emacs
-	pager = delta
 [init]
 	defaultBranch = main

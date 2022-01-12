@@ -30,7 +30,7 @@ font pango:NotoMono Nerd Font 9
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -40,7 +40,7 @@ bindsym $mod+Shift+q kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym $mod+d exec --no-startup-id rofi -show-icons -dpi 1 -show drun
 
 # change focus
 bindsym $mod+j focus left
@@ -94,16 +94,16 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "web "
-set $ws2 "code "
-set $ws3 "messaging "
-set $ws4 "music"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+set $ws1 "I "
+set $ws2 "II "
+set $ws3 "III"
+set $ws4 "IV"
+set $ws5 "V"
+set $ws6 "VI"
+set $ws7 "VII"
+set $ws8 "VIII"
+set $ws9 "IX"
+set $ws10 "X"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -180,14 +180,16 @@ bindsym XF86MonBrightnessDown exec --no-startup-id "sudo brightlight -p -d 5"
 exec --no-startup-id $HOME/.fehbg
 
 # Set auto-lock
-exec_always --no-startup-id xautolock -corners -000 -locker "/home/kas/.local/bin/lockscreen"
+exec_always --no-startup-id xautolock -corners -000 -locker "/home/kas/.local/bin/lockscreen" \
+  -notify 30 \
+  -notifier "notify-send -u critical -t 10000 -- 'locking screen in 30 seconds'"
 
 # Start Redshift
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 exec --no-startup-id redshift-gtk
 
 # Run Signal in Tray
-# exec --no-startup-id signal-desktop --start-in-tray
+exec --no-startup-id signal-desktop --start-in-tray
 
 # Run Slakc in Tray
 exec --no-startup-id slack --startup
@@ -196,10 +198,10 @@ exec --no-startup-id slack --startup
 exec --no-startup-id mailspring
 
 # Run MineTime for calendar
-exec --no-startup-id minetime
+exec --no-startup-id morgen
 
 # Set gaps to prevent polybar from overlapping windows
-gaps inner 0
+gaps inner 5
 
 # Configure windows to float
 for_window [class="^.*"] border pixel 0

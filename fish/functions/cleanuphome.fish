@@ -1,5 +1,15 @@
 function cleanuphome
-    if [ -f "Cargo.lock" ];
+    if [ -d node_modules ];
+        rm -rf node_modules;
+    end;
+    if [ -d vscode ];
+        cd vscode;
+        if [ -d out ];
+	        rm -r *out*;
+        end;
+	    cd ../;
+    end;
+    if [ -f "Cargo.toml" ];
         cargo clean;
     end;
     if [ -f "Makefile" ];
@@ -11,11 +21,14 @@ function cleanuphome
     if [ -f "pom.xml" ];
         mvn clean;
     end;
+    if [ -f "stack.yaml" ];
+        stack clean --full;
+    end;
     for i in *;
         if [ -d "$i" ];
             cd "$i";
-            cleanuphome;
-            cd ../;
+            and cleanuphome;
+            and cd ../;
         end;
     end;
 end;

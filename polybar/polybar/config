@@ -1,9 +1,6 @@
 [bar/mybar]
-monitor = "DP-0"
-
-font-0 = "Iosevka Nerd Font:style=Regular:size=13;1"
-font-1 = "Font Awesome 5 Free:style=Regular:size=12;1"
-
+font-0 = FiraCode Nerd Font:style=Regular:size=9;6
+font-1 = FontAwesome:style=Regular:size=10;6
 
 background = #000
 foreground = #839496
@@ -12,40 +9,26 @@ bottom = true
 fixed-center = true
 
 width = 100%
-height = 26
+height = 36
+#height = 28
 
 tray-position = right
 tray-padding  = 2
-tray-maxsize  = 18
+tray-maxsize  = 36
 
-#dpi-x = 90
-#dpi-y = 90
-pseudo-transparency = false
+dpi-x = 180
+dpi-y = 180
 
 module-margin = 1
-padding = 0
 
-line-size = 2
+padding = 1
+
+line-size = 3
 line-color = #dc322f
 
 # The Modules setup
-modules-left = mpd i3 title
-modules-right = pulseaudio cpu memory fs wireless-network wired-network date services
-
-[module/mpris]
-type = custom/script
-exec = ~/.config/polybar/scripts/mpris_tail.sh -f '{artist} - {title}'
-tail = true
-label-underline = #d33682
-
-[module/fs]
-type = internal/fs
-mount-0 = /
-mount-1 = /home
-label-mounted = %mountpoint% %percentage_used%%
-format-mounted-underline = #586e75
-format-unmounted-underline = #859900
-
+modules-left = i3 title
+modules-right = battery pulseaudio backlight filesystem date wired-network wireless-network services
 
 [module/services]
 type = custom/script
@@ -54,43 +37,25 @@ exec = ~/.config/polybar/scripts/service_list.sh
 [module/i3]
 type = internal/i3
 fuzzy-match = true
-ws-icon-0 = web;爵
-ws-icon-1 = code;
-ws-icon-2 = messag;
-ws-icon-3 = mus;
+ws-icon-0 = web;
+ws-icon-1 = code;
+ws-icon-2 = messag;
+ws-icon-3 = mus;嗢
 ws-icon-default = 
-
-label-focused = "%icon%"
-label-focused-padding = 1
+label-focused-padding   = 0
 label-focused-underline = #dc322f
-
-label-unfocused = %icon%
-label-unfocused-padding = 1
-
-label-visible = %icon%
-label-visible-padding = 1
+label-unfocused-padding = 0
+label-visible-padding   = 0
+label-separator = |
+label-separator-padding = 1
 label-separator-foreground = #b58900
 
-[module/mpd]
-type = internal/mpd
-host = 127.0.0.1
-port = 6600
-interval = 2
-format-online = <icon-prev> <toggle> <icon-next>  <label-song>
-
-format-online-underline = #FFFFFF
-
-icon-play = 
-icon-pause = 
-icon-prev = 
-icon-next = 
-
-label-song = %title:0:16:..%
-
-bar-progress-width = 10
-bar-progress-indicator = >
-bar-progress-fill = " "
-bar-progress-empty = ─
+[module/filesystem]
+type = internal/fs
+mount-0 = /
+mount-1 = /home
+format-mounted-underline = #586e75
+label-mounted = %mountpoint% %percentage_used%%
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -103,15 +68,13 @@ ramp-volume-2 = 墳
 [module/cpu]
 type = internal/cpu
 interval = 2
-# " "
-format-prefix = "cpu "
+format-prefix = " "
 label = %percentage%%
 
 [module/memory]
 type = internal/memory
 interval = 2
-# " "
-format-prefix = "mem "
+format-prefix = " "
 label = %percentage_used%%
 
 [module/date]
@@ -122,11 +85,12 @@ date-alt = %a %b %d
 time = %I:%M
 time-alt = %I:%M%p
 label = %date% %time%
-label-underline = #268bd2
+format-underline = #dc322f
 
 [module/backlight]
 type = internal/backlight
 card = intel_backlight
+enable-scroll = true
 format = <ramp> <label>
 ramp-0 = 
 ramp-1 = 
@@ -134,23 +98,44 @@ ramp-2 = 
 ramp-3 = 
 ramp-4 = 
 
-[module/wired-network]
-type = internal/network
-interface = enp4s0
-interval = 3.0
-label-connected =  %local_ip%
-label-disconnected = 
-format-connected-underline = #859900
-format-disconnected-underline = #859900
-
 [module/wireless-network]
 type = internal/network
-interface = wlp6s0
+interface = wlp1s0
 interval = 3.0
 label-connected = 直 %essid%
-label-disconnected = "睊 "
-format-connected-underline = #859900
-format-disconnected-underline = #FF66
+label-disconnected = 睊
+format-connected-underline = #2aa198
+format-disconnected-underline = #2aa198
+
+
+[module/wired-network]
+type = internal/network
+interface = enp58s0u1u2
+label-connected =  %local_ip%
+label-disconnected = 
+format-connected-underline = #268bd2
+format-disconnected-underline = #268bd2
+
+
+[module/battery]
+type = internal/battery
+full-at = 99
+battery = BAT0
+adapter = AC0
+
+format-charging    = <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+format-full        = <label-full>
+
+label-charging    =  %percentage%%
+label-discharging = %percentage%%
+label-full        =  %percentage%%
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
 
 [module/title]
 type = internal/xwindow

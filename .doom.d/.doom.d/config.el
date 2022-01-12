@@ -6,8 +6,8 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
-(setq user-full-name "Kasra Ferdowsi"
-      user-mail-address "kferdowsifard@gmail.com")
+(setq user-full-name "John Doe"
+      user-mail-address "john@doe.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
@@ -19,8 +19,9 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "FiraCode Nerd Font" :size 16 :weight 'regular)
-      doom-variable-pitch-font (font-spec :family "sans" :size 13))
+;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
+;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
+(setq doom-font (font-spec :family "FiraCode Nerd Font" :weight 'normal :height 109))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -53,29 +54,13 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-;; Make Emacs pretty
-(add-hook 'org-mode-hook 'org-bullets-mode)
-(add-hook 'org-mode-hook '+org-pretty-mode)
-(add-hook 'prog-mode-hook 'fira-code-mode)
+;; Load the Fira Code mode
+(load! "/home/kas/.emacs.d.old/fira-code-mode.el")
+(add-hook! prog-mode-hook 'fira-code-mode)
 
-;; Use Super+p for Projectile
+;; LSP config
+(setq rustic-lsp-server 'rust-analyzer)
+(setq lsp-before-save-edits t)
+
+;; Key bindings
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-
-;; Auto-format buffer on saves
-;; (setq rustic-format-on-save t)
-(setq rustic-lsp-format t)
-(setq rustic-format-trigger 'on-save)
-
-(defun lsp-format-hook ()
-    (add-hook 'before-save-hook #'lsp-format-buffer t t))
-(add-hook 'rustic-mode-hook #'lsp-format-hook)
-
-
-;; Not sure which one actually works
-(setq tab-width 4)
-(setq-default tab-width 4)
-
-;; TabNine
-(add-to-list 'company-backends #'company-tabnine)
-(setq company-show-numbers t)

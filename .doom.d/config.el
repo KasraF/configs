@@ -6,8 +6,8 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
-(setq user-full-name "John Doe"
-      user-mail-address "john@doe.com")
+(setq user-full-name "Kasra Ferdowsi"
+      user-mail-address "kferdowsifard@gmail.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
@@ -21,7 +21,7 @@
 ;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
-(setq doom-font (font-spec :family "FiraCode Nerd Font" :weight 'normal :height 109))
+(setq doom-font (font-spec :family "JetBrains Mono" :size 20))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -54,13 +54,28 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-;; Load the Fira Code mode
-(load! "/home/kas/.emacs.d.old/fira-code-mode.el")
-(add-hook! prog-mode-hook 'fira-code-mode)
-
-;; LSP config
+;; Rust development configurations (rust-analyzer)
 (setq rustic-lsp-server 'rust-analyzer)
-(setq lsp-before-save-edits t)
+(setq lsp-rust-analyzer-server-display-inlay-hints t);
+(setq lsp-rust-analyzer-rustc-source "discover")
+
+    ;; Format rust on save
+(defun format-before-save-setup ()
+    (add-hook 'before-save-hook
+        #'lsp-format-buffer
+        nil 'local))
+(add-hook 'rustic-mode-hook #'format-before-save-setup)
+
+(add-hook 'org-mode-hook 'org-bullets-mode)
 
 ;; Key bindings
+;; (map! :map projectile-mode-map
+;;     (kbd "s-p") 'projectile-command-map)
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+
+;; Tree-sitter
+(use-package! tree-sitter
+    :config
+    (require 'tree-sitter-langs)
+    (global-tree-sitter-mode)
+    (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))

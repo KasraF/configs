@@ -1,6 +1,6 @@
 modkey = "Mod4"
 workspaces = []
-tags = ["爵", "", "", "", ""]
+tags = ["I", "II", "III", "IV", "V"]
 
 [[keybind]]
 command = "Execute"
@@ -22,7 +22,7 @@ key = "XF86XK_AudioPrev"
 
 [[keybind]]
 command = "Execute"
-value = "rofi -show drun"
+value = "rofi -show-icons -dpi 1 -show drun"
 modifier = ["modkey"]
 
 key = "d"

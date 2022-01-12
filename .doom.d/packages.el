@@ -49,5 +49,12 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
+(package! tree-sitter)
+(package! tree-sitter-langs)
+
+;; (package! fira-code-mode)
 (package! org-bullets)
 (package! solarized-theme)
+(package! fish-mode)
+
+(package! color-theme)
