@@ -8,7 +8,7 @@ cp ~/.config/dunst/dunstrc .
 cp -r ~/.config/rofi .
 
 # Terminal
-cp ~/.config/alacritty/alacritty.yml .
+cp ~/.config/alacritty .
 cp ~/.tmux.conf .
 cp -r ~/.config/fish .
 
