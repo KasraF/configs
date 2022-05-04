@@ -1,6 +1,8 @@
 #!/bin/bash
 export SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+export LOG=/home/kas/leftwm-theme.log
 
+echo "Calling up" >> $LOG;
 
 #down the last running theme
 if [ -f "/tmp/leftwm-theme-down" ]; then
@@ -9,19 +11,25 @@ if [ -f "/tmp/leftwm-theme-down" ]; then
 fi
 ln -s $SCRIPTPATH/down /tmp/leftwm-theme-down
 
+echo "Linked new down script" >> $LOG;
 
 #boot compton or picom if it exists
 if [ -x "$(command -v compton)" ]; then
+  echo "Booting compton" >> $LOG;
   compton &> /dev/null & 
 elif [ -x "$(command -v picom)" ]; then
+  echo "Booting picom" >> $LOG;
   picom &> /dev/null & 
 fi
 
 #set the theme.toml config
-echo "LoadTheme $SCRIPTPATH/theme.toml" > $XDG_RUNTIME_DIR/leftwm/commands.pipe
+echo "Setting theme.toml config" >> $LOG;
+echo "LoadTheme $SCRIPTPATH/theme.toml" > $XDG_RUNTIME_DIR/leftwm/command-0.pipe
+# leftwm command "LoadTheme /home/kas/.config/leftwm/themes/current/theme.toml"
 
 
 #set background
+echo "Setting background to $SCRIPTPATH/background.png" >> $LOG;
 if [ -x "$(command -v feh)" ]; then
   feh --bg-scale $SCRIPTPATH/background.png
 fi
@@ -31,6 +39,7 @@ index=0
 monitor="$(polybar -m | grep +0+0 | sed s/:.*// | tac)"
 leftwm-state -q -n -t $SCRIPTPATH/sizes.liquid | sed -r '/^\s*$/d' | while read -r width x y
 do 
+  echo "Starting polybar for monitor $monitor with barname mainbar$index"
   barname="mainbar$index"
   monitor=$monitor offsetx=$x width=$width polybar -c $SCRIPTPATH/polybar.config $barname &> /dev/null &
   let index=index+1

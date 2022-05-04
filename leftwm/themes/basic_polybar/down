@@ -1,15 +1,21 @@
 #!/bin/bash
 
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+export LOG=/home/kas/leftwm-theme.log
 
 #set background
 if [ -x "$(command -v feh)" ]; then
+  echo "calling feh with $SCRIPTPATH/down.jpg" >> $LOG;
   feh --bg-scale $SCRIPTPATH/down.jpg
 fi
 
-echo "UnloadTheme" > $XDG_RUNTIME_DIR/leftwm/commands.pipe
+echo "echoing UnloadTheme to command-0.pipe" >> $LOG;
+echo "UnloadTheme" > $XDG_RUNTIME_DIR/leftwm/command-0.pipe
 
+echo "Killing compton" >> $LOG;
 pkill compton 
+echo "Killing picom" >> $LOG;
 pkill picom 
+echo "Killing polybar" >> $LOG;
 pkill polybar
 
