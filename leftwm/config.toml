@@ -2,21 +2,25 @@ modkey = "Mod4"
 workspaces = []
 tags = ["I", "II", "III", "IV", "V"]
 
+window_rules = [
+  {window_title = "Playdate Simulator", spawn_floating = true},
+]
+
 [[keybind]]
 command = "Execute"
-value = "mpc toggle"
+value = "playerctl play-pause"
 modifier = []
 key = "XF86XK_AudioPlay"
 
 [[keybind]]
 command = "Execute"
-value = "mpc next"
+value = "playerctl next"
 modifier = []
 key = "XF86XK_AudioNext"
 
 [[keybind]]
 command = "Execute"
-value = "mpc prev"
+value = "playerctl previous"
 modifier = []
 key = "XF86XK_AudioPrev"
 
@@ -28,13 +32,13 @@ modifier = ["modkey"]
 key = "d"
 [[keybind]]
 command = "Execute"
-value = "pactl list short sinks | while read i; do pactl set-sink-mute ${i:0:1} false; pactl set-sink-volume ${i:0:1} +5%; done;"
+value = "pactl list short sinks | while read i; do ID=$(echo \"$i\" | cut -f1); pactl set-sink-mute $ID false; pactl set-sink-volume $ID +5%; done;"
 modifier = []
 key = "XF86XK_AudioRaiseVolume"
 
 [[keybind]]
 command = "Execute"
-value = "pactl list short sinks | while read i; do pactl set-sink-mute ${i:0:1} false; pactl set-sink-volume ${i:0:1} -5%; done;"
+value = "pactl list short sinks | while read i; do ID=$(echo \"$i\" | cut -f1); pactl set-sink-mute $ID false; pactl set-sink-volume $ID -5%; done;"
 modifier = []
 key = "XF86XK_AudioLowerVolume"
 
