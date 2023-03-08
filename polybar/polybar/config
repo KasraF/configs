@@ -1,0 +1,219 @@
+[colors]
+background = #00212B
+foreground = #eee8d5
+background-alt = #994444
+foreground-alt = #FFFFFF
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+
+
+[bar/mybar]
+;height = 40
+;dpi = 192
+height = 26
+dpi = 96
+fixed-center = false
+bottom = true
+
+radius = 5
+
+line-size = 2
+line-color = #f00
+
+border-size = 5
+border-radius = 5
+border-color = #FF063541
+
+padding-left = 1
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = "Jetbrains Mono:size=11;1"
+font-1 = "FiraCode Nerd Font:style=Regular:size=10;1"
+font-2 = misc fixed:pixelsize=11;1
+font-3 = unifont:fontformat=truetype:size=1:antialias=false;0
+font-4 = Wuncon Siji:pixelsize=11;1
+
+tray-position = right
+tray-padding = 2
+
+modules-left = i3 title
+modules-center =
+modules-right = filesystem pulseaudio memory cpu wlan eth temperature battery date
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+
+[module/i3]
+type = internal/i3
+
+label-focused = %name%
+label-unfocused = %name%
+label-visible = %name%
+label-urgent = %name%
+
+label-focused-padding   = 0
+label-focused-underline = #dc322f
+label-unfocused-padding = 0
+label-visible-padding   = 0
+label-separator = |
+label-separator-padding = 1
+label-separator-foreground = #b58900
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+mount-1 = /home
+
+label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <ramp-volume> <label-volume>
+label-volume = %percentage%%
+label-volume-foreground = ${root.foreground}
+
+label-muted = ﱝ
+
+ramp-volume-0 = 奄
+ramp-volume-1 = 奔
+ramp-volume-2 = 墳
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = "mem "
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = #4bffdc
+label = %percentage_used%%
+
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = "cpu "
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = #f90000
+label = %percentage:2%%
+
+[module/wlan]
+type = internal/network
+interface = wlp0s20f3
+interval = 3.0
+
+format-connected = <label-connected>
+format-connected-underline = #9f78e1
+label-connected = 直 %essid:0:10:…%
+
+format-disconnected = <label-disconnected>
+label-disconnected = 睊
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = ${colors.foreground-alt}
+
+[module/eth]
+type = internal/network
+interface = enp0s20f0u5u1
+interval = 3.0
+
+format-connected-underline = #55aa55
+format-connected-prefix-foreground = ${colors.foreground-alt}
+label-connected = %local_ip%
+format-disconnected =
+
+[module/temperature]
+type = internal/temperature
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon6/temp1_input
+thermal-zone = 0
+base-temperature = 60
+warn-temperature = 90
+
+format = <ramp> <label>
+format-underline = #f50a4d
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${self.format-underline}
+
+label = %temperature-c%
+label-warn = %temperature-c%
+label-warn-foreground = ${colors.secondary}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = ${colors.foreground-alt}
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = #ffb52a
+
+format-discharging = <animation-discharging> <label-discharging>
+format-discharging-underline = ${self.format-charging-underline}
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-underline = ${self.format-charging-underline}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = ${colors.foreground-alt}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-5 = 
+animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-framerate = 750
+
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-3 = 
+animation-discharging-4 = 
+animation-discharging-5 = 
+animation-discharging-foreground = ${colors.foreground-alt}
+animation-discharging-framerate = 750
+
+
+[module/date]
+type = internal/date
+date =    %%{F#99}%m/%d/%Y%%{F-}  %%{F#fff}%I:%M %p%{F-}
+date-alt = %%{F#fff}%A, %B %d, %Y  %%{F#fff}%I:%M %p%{F#666}%%{F#fba922}%S%%{F-}
