@@ -1,5 +1,5 @@
 [bar/mybar]
-font-0 = FiraCode Nerd Font:style=Regular:size=9;6
+font-0 = RobotoMono Nerd Font:style=Regular:size=10;6
 font-1 = FontAwesome:style=Regular:size=10;6
 
 background = #000
@@ -9,12 +9,11 @@ bottom = true
 fixed-center = true
 
 width = 100%
-height = 36
-#height = 28
+height = 30
 
 tray-position = right
 tray-padding  = 2
-tray-maxsize  = 36
+tray-maxsize  = 30
 
 dpi-x = 180
 dpi-y = 180
@@ -23,12 +22,12 @@ module-margin = 1
 
 padding = 1
 
-line-size = 3
+line-size = 4
 line-color = #dc322f
 
 # The Modules setup
 modules-left = i3 title
-modules-right = battery pulseaudio backlight filesystem date wired-network wireless-network services
+modules-right = battery wireless-network pulseaudio backlight cpu memory date services
 
 [module/services]
 type = custom/script
@@ -49,13 +48,6 @@ label-visible-padding   = 0
 label-separator = |
 label-separator-padding = 1
 label-separator-foreground = #b58900
-
-[module/filesystem]
-type = internal/fs
-mount-0 = /
-mount-1 = /home
-format-mounted-underline = #586e75
-label-mounted = %mountpoint% %percentage_used%%
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -85,12 +77,10 @@ date-alt = %a %b %d
 time = %I:%M
 time-alt = %I:%M%p
 label = %date% %time%
-format-underline = #dc322f
 
 [module/backlight]
 type = internal/backlight
 card = intel_backlight
-enable-scroll = true
 format = <ramp> <label>
 ramp-0 = 
 ramp-1 = 
@@ -104,18 +94,6 @@ interface = wlp1s0
 interval = 3.0
 label-connected = 直 %essid%
 label-disconnected = 睊
-format-connected-underline = #2aa198
-format-disconnected-underline = #2aa198
-
-
-[module/wired-network]
-type = internal/network
-interface = enp58s0u1u2
-label-connected =  %local_ip%
-label-disconnected = 
-format-connected-underline = #268bd2
-format-disconnected-underline = #268bd2
-
 
 [module/battery]
 type = internal/battery

@@ -9,10 +9,12 @@ setenv LESS_TERMCAP_ue \e'[0m'           # end underline
 setenv LESS_TERMCAP_us \e'[04;38;5;146m' # begin underline
 
 # Set Path
-set PATH /home/kas/.cargo/bin /home/kas/.local/bin /home/kas/.elan/bin /home/kas/go/bin $PATH
+set PATH /home/kas/.cargo/bin /home/kas/.local/bin /home/kas/.elan/bin /home/kas/go/bin /home/kas/.yarn/bin $PATH
 set CC /usr/bin/clang
 set CPP /usr/bin/clang++
 
+alias la "exa -la --icons"
+alias hx "helix"
 alias vim nvim
 alias vi nvim
 alias emacs 'emacsclient -a "" -nc'
@@ -38,3 +40,5 @@ starship init fish | source
 
 # opam configuration
 source /home/kas/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+
+set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin /home/kas/.ghcup/bin $PATH # ghcup-env

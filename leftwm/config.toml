@@ -3,7 +3,18 @@ workspaces = []
 tags = ["I", "II", "III", "IV", "V"]
 
 disable_current_tag_swap = true
-focus_new_windows = false
+focus_new_windows = true
+
+[[window_rules]]
+window_title = "menu"
+spawn_as_type = "Menu"
+spawn_floating = true
+
+[[window_rules]]
+window_title = "Message Manager_Popup"
+never_focus = true
+spawn_as_type = "Desktop"
+spawn_floating = false
 
 [[window_rules]]
 window_title = "Playdate Simulator"

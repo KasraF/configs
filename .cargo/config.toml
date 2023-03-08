@@ -6,4 +6,4 @@ rustflags = ["-C", "link-arg=-fuse-ld=lld"]
 codegen-units = 8
 
 [profile.release]
-lto = true
+#lto = true
