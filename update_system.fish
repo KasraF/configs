@@ -2,10 +2,10 @@
 
 # First, copy all the files
 # WM stuff
-cp i3/config ~/.config/i3/config
-cp -r ./polybar ~/.config/polybar
-cp ./dunstrc ~/.config/dunst/dunstrc
-cp ./rofi/config ~/.config/rofi/config
+cp i3/config ~/.config/i3/
+cp -r ./polybar ~/.config/
+cp ./dunstrc ~/.config/dunst/
+cp ./rofi/config ~/.config/rofi/
 
 # Terminal
 cp -r ./alacritty/* ~/.config/alacritty/
@@ -18,7 +18,7 @@ cp -r ./.doom.d ~/.doom.d
 
 # LeftWM
 cp -r ./leftwm/* ~/.config/leftwm/
-cp -r ./picom ~/.config/picom
+cp -r ./picom ~/.config/
 
 # Cargo!
 cp ./.cargo/* ~/.cargo/
