@@ -1,1 +1,0 @@
-polybar mybar
