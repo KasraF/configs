@@ -37,6 +37,7 @@ end
 
 zoxide init fish | source
 starship init fish | source
+# atuin init fish | source
 
 # opam configuration
 source /home/kas/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true

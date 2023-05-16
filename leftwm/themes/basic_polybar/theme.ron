@@ -1,0 +1,13 @@
+(
+    border_width: 0,
+    margin: 2,
+    workspace_margin: Some(4),
+    // default_width: Option<i32>,
+    // default_height: Option<i32>,
+    // always_float: Option<bool>,
+    // gutter: Option<Vec<Gutter>>,
+    default_border_color: "#002b36",
+    floating_border_color: "#586e75",
+    focused_border_color: "#073642",
+    // on_new_window_cmd: Option<String>,
+)

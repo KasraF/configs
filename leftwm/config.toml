@@ -70,7 +70,7 @@ key = "XF86XK_MonBrightnessDown"
 
 [[keybind]]
 command = "Execute"
-value = "alacritty"
+value = "wezterm"
 modifier = ["modkey"]
 key = "Return"
 

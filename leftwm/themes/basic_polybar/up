@@ -22,6 +22,9 @@ elif [ -x "$(command -v picom)" ]; then
   picom &> /dev/null & 
 fi
 
+# Start the KDE polkit agent
+systemctl --user start plasma-polkit-agent
+
 #set the theme.toml config
 echo "Setting theme.toml config" >> $LOG;
 echo "LoadTheme $SCRIPTPATH/theme.toml" > $XDG_RUNTIME_DIR/leftwm/command-0.pipe
@@ -36,12 +39,12 @@ fi
 
 
 index=0
-monitor="$(polybar -m | grep +0+0 | sed s/:.*// | tac)"
+monitors="$(polybar -m | sed s/:.*//)"
 leftwm-state -q -n -t $SCRIPTPATH/sizes.liquid | sed -r '/^\s*$/d' | while read -r width x y
-do 
-  echo "Starting polybar for monitor $monitor with barname mainbar$index"
+do
+  let indextemp=index+1
+  monitor=$(sed "$indextemp!d" <<<"$monitors")
   barname="mainbar$index"
-  monitor=$monitor offsetx=$x width=$width polybar -c $SCRIPTPATH/polybar.config $barname &> /dev/null &
-  let index=index+1
+  monitor=$monitor offset=$x width=$width polybar -c $SCRIPTPATH/polybar.config $barname &> /dev/null &
+  let index=indextemp
 done
-

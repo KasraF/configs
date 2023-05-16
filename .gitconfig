@@ -6,6 +6,6 @@
 [pull]
 	rebase = false
 [core]
-	editor = emacs
+	editor = helix
 [init]
 	defaultBranch = main
